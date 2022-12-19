@@ -1,12 +1,16 @@
 import styled from 'styled-components';
+import { device, size } from '../../../GlobalStyles';
 
-const Container = styled.div`
-  border: 1px solid lime;
+const Section = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
   min-height: 10rem;
   margin-top: -3rem;
+
+  @media ${device.tablet} {
+    width: ${size.tablet};
+    margin: 0 auto;
+    margin-top: -3rem;
+  }
 `;
 
-export default Container;
+export default Section;

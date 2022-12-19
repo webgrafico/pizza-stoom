@@ -1,6 +1,15 @@
 import React from 'react';
-import Section from './Styles';
+import { Brand } from '../../atoms/Brand/Brand';
+import { Points } from '../../atoms/Points/Points';
+import Section, { Container } from './Styles';
 
 export const Header = () => {
-  return <Section>Header</Section>;
+  return (
+    <Section>
+      <Container>
+        <Brand />
+        <Points />
+      </Container>
+    </Section>
+  );
 };

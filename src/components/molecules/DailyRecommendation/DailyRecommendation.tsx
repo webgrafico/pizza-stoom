@@ -1,5 +1,6 @@
 import React from 'react';
+import Container from './Styles';
 
 export const DailyRecommendation = () => {
-  return <div>Daily Recommendation</div>;
+  return <Container>Daily Recommendation</Container>;
 };

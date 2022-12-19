@@ -1,16 +1,16 @@
 import { DailyRecommendation } from '../../molecules/DailyRecommendation';
 import { Header } from '../../molecules/Header';
 import { Form } from '../Form';
-import Container from './Styles';
+import Section from './Styles';
 
 export const App = () => {
   return (
     <div>
       <Header />
-      <Container>
+      <Section>
         <DailyRecommendation />
         <Form />
-      </Container>
+      </Section>
     </div>
   );
 };
