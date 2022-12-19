@@ -27,7 +27,7 @@ const Container = styled.div`
   }
   @media ${device.mobileL} {
     width: 180px;
-    margin-top: 0;
+    margin-top: -1rem;
   }
 `;
 

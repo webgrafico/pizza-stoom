@@ -7,10 +7,6 @@ const Section = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-
-  @media ${device.mobileL} {
-    height: 10rem;
-  }
 `;
 
 export const Container = styled.div`

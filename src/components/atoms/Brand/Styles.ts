@@ -13,6 +13,7 @@ const Container = styled.div`
   h1 {
     margin: 0;
     color: #fff;
+    font-size: 3rem;
   }
   span {
     color: ${colors.yellow};
@@ -23,7 +24,7 @@ const Container = styled.div`
   }
 
   @media ${device.mobileL} {
-    width: 260px;
+    width: 350px;
   }
 `;
 
