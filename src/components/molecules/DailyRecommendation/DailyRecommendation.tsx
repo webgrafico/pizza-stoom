@@ -2,19 +2,29 @@ import React, { useState } from 'react';
 import { Card } from '../../atoms/Card/Card';
 import Container from './Styles';
 
-import pizzaOne from '../../../assets/pizza-1.jpg';
+import { IPizzaBase } from '../CardList/CardList';
 
-export const DailyRecommendation = () => {
+interface IPizzaRecommendation extends IPizzaBase {
+  dough: string;
+  ingredients: string;
+  points: number;
+}
+
+interface IDailyRecommendation {
+  pizza: IPizzaRecommendation;
+}
+
+export const DailyRecommendation = ({ pizza }: IDailyRecommendation) => {
   return (
     <Container>
       <Card
         variation='cardRecommendation'
-        imageUrl={pizzaOne}
-        dough={'Napolitana'}
-        ingredients={'presunto, queijo'}
-        title={'Nova Iorque'}
-        price={37}
-        points={50}
+        imageUrl={pizza.imageUrl}
+        dough={pizza.dough}
+        ingredients={pizza.ingredients}
+        title={pizza.title}
+        price={pizza.price}
+        points={pizza.points}
       />
     </Container>
   );
