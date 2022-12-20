@@ -23,7 +23,7 @@ const Container = styled.div`
     margin-right: 1rem;
   }
 
-  @media ${device.mobileL} {
+  @media ${device.tablet} {
     width: 350px;
   }
 `;

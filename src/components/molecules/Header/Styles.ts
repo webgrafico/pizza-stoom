@@ -12,12 +12,13 @@ const Section = styled.div`
 export const Container = styled.div`
   width: ${size.tablet};
 
-  @media ${device.mobileL} {
+  @media ${device.tablet} {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: -3rem;
     padding: 0 1rem;
+    flex-wrap: wrap;
   }
 `;
 

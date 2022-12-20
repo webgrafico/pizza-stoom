@@ -11,19 +11,20 @@ export const Body = styled.div`
   background: url(${IconBadge}) no-repeat center;
   position: absolute;
   top: -3rem;
-  right: -2.2rem;
+  right: -4rem;
   text-align: center;
   margin-right: 3rem;
-  padding: 1rem;
-  font-size: 0.8rem;
+  padding: 1.2rem;
+  font-size: 1rem;
 
   div {
     font-weight: bold;
   }
-  @media ${device.mobileL} {
+  @media ${device.tablet} {
     margin-right: 0;
-    padding: 2rem;
     font-size: 1.2rem;
+    padding: 2rem;
+    right: -2.2rem;
   }
 `;
 

@@ -1,20 +1,24 @@
 import React from 'react';
 import { Price } from '../../../Price/Price';
+import { Image } from '../CardRecommendation/Styles';
+import Container from './Styles';
 
-export const CardSelection = () => {
-  const formatCurrency = (priceValue: number) => {
-    const options = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
-    return priceValue.toLocaleString('pt-br', options);
-  };
+interface ICardSelection {
+  imageUrl: string;
+  title: string;
+  description: string;
+  price: number;
+}
 
+export const CardSelection = ({ imageUrl = '', title = '', description = '', price = 0 }: ICardSelection) => {
   return (
-    <div>
-      <img src='' alt='' />
+    <Container>
+      <Image src={imageUrl} height={20} />
       <div>
-        <h2>Pizza Napolitana</h2>
-        <div>fsadfasd</div>
-        <Price value={10} />
+        <h2>{title}</h2>
+        <div>{description}</div>
+        <Price value={price} />
       </div>
-    </div>
+    </Container>
   );
 };

@@ -13,10 +13,17 @@ const Container = styled.button`
   align-items: center;
   letter-spacing: 3px;
   font-size: 1.2rem;
-  img {
-    margin-left: 1rem;
-    width: 18px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+
+  &:hover {
+    filter: brightness(80%);
   }
+`;
+
+export const Img = styled.img.attrs((props: { width: number }) => props)`
+  margin-left: 1rem;
+  width: ${(props) => `${props.width}px`};
 `;
 
 export default Container;

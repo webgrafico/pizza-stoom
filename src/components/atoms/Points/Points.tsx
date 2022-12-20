@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import IconLunch from '../../../assets/icon-lunch.svg';
-import Container from './Styles';
+import Container, { Point } from './Styles';
 
-export const Points = () => {
+interface IPoints {
+  value: number;
+}
+
+export const Points = ({ value = 0 }: IPoints) => {
   return (
     <Container>
       <img src={IconLunch} alt='Lunch' width={48} />
       <div>
         <h3>StoomPoints</h3>
         <span>
-          <span>0</span> pontos.
+          <Point>{value}</Point> pontos.
         </span>
       </div>
     </Container>

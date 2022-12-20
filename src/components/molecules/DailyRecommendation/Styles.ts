@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device, size } from '../../../GlobalStyles';
+import { colors, device, size } from '../../../GlobalStyles';
 
 const Container = styled.div`
   width: 100%;
@@ -7,6 +7,14 @@ const Container = styled.div`
   @media ${device.mobileL} {
     display: flex;
   }
+`;
+
+export const Title = styled.div`
+  font-size: 1.5rem;
+  color: ${colors.silverDark}
+  margin-bottom: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
 `;
 
 export default Container;

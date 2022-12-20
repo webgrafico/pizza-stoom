@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { colors, device } from '../../../../../GlobalStyles';
-import pizzaOne from './../../../../../assets/pizza-1.jpg';
 
 export const Description = styled.div`
   margin-bottom: 1rem;
@@ -20,8 +19,12 @@ export const Header = styled.div`
 
 export const Body = styled.div`
   margin-top: 1rem;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-rows: 1fr 2fr;
   @media ${device.mobileL} {
-    display: flex;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto;
   }
 `;
 
@@ -36,23 +39,26 @@ export const Footer = styled.div`
   align-items: center;
 `;
 
-export const Image = styled.div`
-  background: url(${pizzaOne}) no-repeat center center;
+export const Image = styled.div.attrs((props: { src: string; width: number; height: number }) => props)`
+  background: url(${(props) => props.src}) no-repeat center center;
   background-size: cover;
-  height: 13rem;
-  margin-right: 1rem;
-  width: 100%;
-  border-radius: 1rem;
+
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 
   @media ${device.mobileL} {
-    width: 20rem;
+    width: ${(props) => (props.width ? props.width + 'rem' : '100%')};
+    min-height: ${(props) => (props.height ? props.height + 'rem' : 'auto')};
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    border-bottom-left-radius: 1rem;
   }
 `;
 
 const Container = styled.div`
-  width: 100%;
   h2,
   h3 {
     margin: 0;
@@ -62,6 +68,12 @@ const Container = styled.div`
   }
   h3 {
     color: ${colors.silver};
+  }
+  border-radius: 1rem;
+  background-color: ${colors.silverLight};
+  padding: 1rem;
+  @media ${device.mobileL} {
+    width: 100%;
   }
 `;
 

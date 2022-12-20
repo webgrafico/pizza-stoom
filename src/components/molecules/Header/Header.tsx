@@ -8,7 +8,7 @@ export const Header = () => {
     <Section>
       <Container>
         <Brand />
-        <Points />
+        <Points value={53} />
       </Container>
     </Section>
   );
