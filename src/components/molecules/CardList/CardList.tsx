@@ -1,33 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from '../../atoms/Card';
 
 import List, { Item } from './Styles';
 
-export interface IPizzaBase {
-  title: string;
+export interface IDoughBase {
+  name: string;
   price: number;
   imageUrl: string;
 }
 
-export interface IPizza extends IPizzaBase {
+export interface IDough extends IDoughBase {
   description: string;
+  selected: boolean;
 }
 
 interface ICardList {
-  pizzas: IPizza[];
+  doughs: IDough[];
 }
 
-export const CardList = ({ pizzas }: ICardList) => {
+export const CardList = ({ doughs }: ICardList) => {
+  const [selected, setSelected] = useState(false);
+
   return (
     <List>
-      {pizzas.map((pizza, index) => (
+      {doughs?.map((dough, index) => (
         <Item key={index}>
           <Card
+            selected={dough.selected}
             variation='cardSelection'
-            imageUrl={pizza.imageUrl}
-            title={pizza.title}
-            description={pizza.description}
-            price={pizza.price}
+            imageUrl={dough.imageUrl}
+            name={dough.name}
+            description={dough.description}
+            price={dough.price}
+            handlePoints={() => {}}
           />
         </Item>
       ))}

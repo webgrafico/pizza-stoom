@@ -6,20 +6,22 @@ import Container, { Body, Description, Footer, Header, Image, Label, Wrapper } f
 
 interface ICardRecommendation {
   imageUrl: string;
-  title: string;
+  name: string;
   dough: string;
   ingredients: string;
   price: number;
   points: number;
+  handlePoints(): void;
 }
 
 export const CardRecommendation = ({
   imageUrl = '',
-  title = '',
+  name = '',
   dough = '',
   ingredients = '',
   price = 0,
-  points = 0
+  points = 0,
+  handlePoints
 }: ICardRecommendation) => {
   return (
     <Container>
@@ -30,7 +32,7 @@ export const CardRecommendation = ({
       <Body>
         <Image src={imageUrl} />
         <Wrapper>
-          <h2>{title}</h2>
+          <h2>{name}</h2>
           <Description>
             <Label>Massa:</Label>
             <div>{dough}</div>
@@ -39,7 +41,7 @@ export const CardRecommendation = ({
           </Description>
           <Footer>
             <Price value={price} />
-            <Button text={'quero!'} icon={'check'} />
+            <Button text={'quero!'} icon={'check'} onClick={handlePoints} />
           </Footer>
         </Wrapper>
       </Body>

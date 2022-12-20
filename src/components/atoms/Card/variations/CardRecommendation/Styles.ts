@@ -72,8 +72,13 @@ const Container = styled.div`
   border-radius: 1rem;
   background-color: ${colors.silverLight};
   padding: 1rem;
+  margin: 1rem;
   @media ${device.mobileL} {
     width: 100%;
+  }
+
+  @media ${device.tablet} {
+    margin: 0;
   }
 `;
 

@@ -8,45 +8,56 @@ import pizzaTwo from '../../../assets/pizza-2.jpg';
 import pizzaThree from '../../../assets/pizza-3.jpg';
 import pizzaFour from '../../../assets/pizza-4.jpg';
 
-export const App = () => {
-  const pizzasMock = [
-    {
-      title: 'Pizza Napolitana 1',
-      description: 'asdf 1',
-      price: 12,
-      imageUrl: pizzaTwo
-    },
-    {
-      title: 'Pizza Napolitana 2',
-      description: 'asdf 2',
-      price: 32,
-      imageUrl: pizzaThree
-    },
-    {
-      title: 'Pizza Napolitana 3',
-      description: 'asdf 3',
-      price: 43,
-      imageUrl: pizzaFour
-    }
-  ];
+import mock from '../../../mock/data.json';
+import { useEffect, useState } from 'react';
+import { IPizzaRecommendation } from '../../molecules/DailyRecommendation/DailyRecommendation';
+import { IDough } from '../../molecules/CardList/CardList';
 
-  const pizzaMock = {
-    title: 'Pizza Napolitana 1',
-    dough: 'asdf 1',
-    price: 12,
-    imageUrl: pizzaOne,
-    ingredients: 'presunto, ovo, queijo',
-    points: 50
+type TIngredients = string[];
+
+interface IDailyRecommendation extends Omit<IPizzaRecommendation, 'dough' | 'ingredients'> {
+  dough: number;
+  ingredients: number[];
+}
+interface IData {
+  dailyRecommendation: IDailyRecommendation;
+  doughs: IDough[];
+  ingredients: TIngredients;
+  stoomPoints: number;
+}
+
+export const App = () => {
+  const [storeMock, setStoreMock] = useState<IData>({} as IData);
+  const [points, setPoints] = useState(0);
+
+  useEffect(() => {
+    setStoreMock(mock as unknown as IData);
+  }, []);
+
+  const ingredients = storeMock.dailyRecommendation?.ingredients
+    .map((ingredient) => storeMock.ingredients[ingredient])
+    .join(', ');
+
+  const dough = storeMock.doughs?.[storeMock.dailyRecommendation?.dough].name;
+
+  const dailyRecommendation = {
+    ...storeMock.dailyRecommendation,
+    dough,
+    ingredients
   };
 
-  const points = 50;
+  const handlePoints = () => {
+    const defaultValue = storeMock.dailyRecommendation?.points;
+    const newPoints = points + defaultValue;
+    setPoints(newPoints);
+  };
 
   return (
     <div>
       <Header points={points} />
       <Section>
-        <DailyRecommendation pizza={pizzaMock} />
-        <Form pizzas={pizzasMock} />
+        <DailyRecommendation pizza={dailyRecommendation} handlePoints={handlePoints} />
+        <Form doughs={storeMock.doughs} />
       </Section>
     </div>
   );

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors, device } from '../../../GlobalStyles';
 
 const List = styled.div`
   overflow: auto;

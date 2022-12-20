@@ -8,23 +8,27 @@ type TCardTypes = keyof typeof cardTypes;
 interface ICard {
   variation: TCardTypes;
   imageUrl: string;
-  title: string;
+  name: string;
   description?: string;
   dough?: string;
   ingredients?: string;
   price: number;
   points?: number;
+  selected?: boolean;
+  handlePoints(): void;
 }
 
 export const Card = ({
   variation,
   imageUrl = '',
-  title = '',
+  name = '',
   description = '',
   price = 0,
   dough = '',
   ingredients = '',
-  points = 0
+  points = 0,
+  selected,
+  handlePoints
 }: ICard) => {
   const getComponent = (type: TCardTypes) => {
     switch (type) {
@@ -32,17 +36,22 @@ export const Card = ({
         return (
           <CardRecommendation
             imageUrl={imageUrl}
-            title={title}
+            name={name}
             dough={dough}
             ingredients={ingredients}
             price={price}
             points={points}
+            handlePoints={handlePoints}
           />
         );
       case cardTypes.cardSelection:
-        return <CardSelection imageUrl={imageUrl} title={title} description={description} price={price} />;
+        return (
+          <CardSelection selected={selected} imageUrl={imageUrl} name={name} description={description} price={price} />
+        );
       default:
-        return <CardSelection imageUrl={imageUrl} title={title} description={description} price={price} />;
+        return (
+          <CardSelection selected={selected} imageUrl={imageUrl} name={name} description={description} price={price} />
+        );
     }
   };
 

@@ -1,24 +1,25 @@
 import React from 'react';
 import { Price } from '../../../Price/Price';
 import { Image } from '../CardRecommendation/Styles';
-import Container from './Styles';
+import Container, { Context } from './Styles';
 
 interface ICardSelection {
   imageUrl: string;
-  title: string;
+  name: string;
   description: string;
   price: number;
+  selected?: boolean;
 }
 
-export const CardSelection = ({ imageUrl = '', title = '', description = '', price = 0 }: ICardSelection) => {
+export const CardSelection = ({ imageUrl = '', name = '', description = '', price = 0, selected }: ICardSelection) => {
   return (
-    <Container>
-      <Image src={imageUrl} height={20} />
-      <div>
-        <h2>{title}</h2>
+    <Container selected={selected}>
+      <Image src={imageUrl} />
+      <Context>
+        <h2>{name}</h2>
         <div>{description}</div>
         <Price value={price} />
-      </div>
+      </Context>
     </Container>
   );
 };
