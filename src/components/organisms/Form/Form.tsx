@@ -21,6 +21,7 @@ interface IForm {
   handleSelectIngredients(id: number): void;
   sizes: ISizes[];
   order: IOrder;
+  handleActionPoint(): void;
 }
 
 export const Form = ({
@@ -30,7 +31,8 @@ export const Form = ({
   ingredients,
   handleSelectDough,
   handleSelectSize,
-  handleSelectIngredients
+  handleSelectIngredients,
+  handleActionPoint
 }: IForm) => {
   const [current, setCurrent] = useState(1);
   const maxSteps = 5;
@@ -52,8 +54,12 @@ export const Form = ({
 
   const handleSteps = () => {
     const isDoughSelected = doughs.some((dough) => dough.selected);
-    if (!isDoughSelected) {
+    if (!isDoughSelected && order.isDailyRecommendation === false) {
       return false;
+    }
+
+    if (current === 4) {
+      handleActionPoint();
     }
 
     current < maxSteps ? setCurrent(current + 1) : setCurrent(1);

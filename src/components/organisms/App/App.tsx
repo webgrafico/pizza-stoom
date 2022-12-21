@@ -53,18 +53,23 @@ export const App = () => {
     ingredients
   };
 
-  const handlePoints = () => {
+  const handleActionPoint = () => {
     const defaultValue = storeMock.dailyRecommendation?.points;
     const newPoints = points + defaultValue;
     setPoints(newPoints);
     localStorage.setItem('stoomPoints', newPoints.toString());
+  };
 
+  const handlePoints = () => {
     const pizza = {
       ...order,
       isDailyRecommendation: true,
       dough: storeMock.doughs[storeMock.dailyRecommendation?.dough].name,
       imageUrl: storeMock.dailyRecommendation?.imageUrl,
-      size: storeMock.sizes[storeMock.dailyRecommendation?.size].name
+      size: storeMock.sizes[storeMock.dailyRecommendation?.size].name,
+      ingredients: storeMock.dailyRecommendation?.ingredients.map(
+        (ingredient) => storeMock.ingredients[ingredient].name
+      )
     };
 
     setOrder(pizza);
@@ -122,6 +127,7 @@ export const App = () => {
           handleSelectDough={handleSelectDough}
           handleSelectSize={handleSelectSize}
           handleSelectIngredients={handleSelectIngredients}
+          handleActionPoint={handleActionPoint}
         />
       </Section>
     </>
