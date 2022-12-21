@@ -3,6 +3,7 @@ import { Button } from '../../atoms/Button/Button';
 import { Steps } from '../../atoms/Steps';
 import { CardList } from '../../molecules/CardList';
 import { IDough } from '../../molecules/CardList/CardList';
+import { CardSize } from '../../molecules/CardSizes';
 import { Title } from '../../molecules/DailyRecommendation/Styles';
 import Container, { Footer } from './Styles';
 
@@ -25,7 +26,7 @@ export const Form = ({ doughs }: IForm) => {
       case 1:
         return <CardList doughs={doughs} />;
       case 2:
-        return <>Tamanho</>;
+        return <CardSize />;
       case 3:
         return <>Recheio</>;
       case 4:

@@ -20,10 +20,14 @@ export const Body = styled.div`
   div {
     font-weight: bold;
   }
-  @media ${device.tablet} {
+  @media ${device.mobileL} {
     margin-right: 0;
     font-size: 1.2rem;
     padding: 2rem;
+    right: -2rem;
+  }
+
+  @media ${device.tablet} {
     right: -2.2rem;
   }
 `;
