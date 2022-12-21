@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import Container, { List } from './Styles';
-import { Item } from './Styles';
+import React from 'react';
+import List, { Item } from './Styles';
 
 export interface IIngredient {
   name: string;
@@ -13,7 +12,7 @@ interface ISelectItem {
 
 export const SelectItem = ({ ingredients, handleSelect }: ISelectItem) => {
   return (
-    <Container>
+    <>
       <List>
         {ingredients.map((ingredient, index) => (
           <Item key={index} onClick={() => handleSelect(index)} selected={ingredient.selected}>
@@ -21,6 +20,6 @@ export const SelectItem = ({ ingredients, handleSelect }: ISelectItem) => {
           </Item>
         ))}
       </List>
-    </Container>
+    </>
   );
 };

@@ -1,6 +1,5 @@
 import React from 'react';
-import Container, { List } from './Styles';
-import { Item } from './Styles';
+import List, { Item } from './Styles';
 
 export interface ISizes {
   name: string;
@@ -15,7 +14,7 @@ interface ICardSize {
 
 export const CardSize = ({ handleSelect, sizes }: ICardSize) => {
   return (
-    <Container>
+    <>
       <List>
         {sizes.map((size, index) => (
           <Item key={index} onClick={() => handleSelect(index)} selected={size.selected}>
@@ -25,6 +24,6 @@ export const CardSize = ({ handleSelect, sizes }: ICardSize) => {
           </Item>
         ))}
       </List>
-    </Container>
+    </>
   );
 };

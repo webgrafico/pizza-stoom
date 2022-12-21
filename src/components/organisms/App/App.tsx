@@ -2,7 +2,6 @@ import { DailyRecommendation } from '../../molecules/DailyRecommendation';
 import { Header } from '../../molecules/Header';
 import { Form } from '../Form';
 import Section from './Styles';
-
 import mock from '../../../mock/data.json';
 import { useEffect, useState } from 'react';
 import { IPizzaRecommendation } from '../../molecules/DailyRecommendation/DailyRecommendation';
@@ -23,13 +22,22 @@ interface IData {
   sizes: ISizes[];
 }
 
+const initialData = {
+  order: { dough: '', size: '', ingredients: [], imageUrl: '' },
+  points: 0
+};
+
 export const App = () => {
   const [storeMock, setStoreMock] = useState<IData>({} as IData);
-  const [points, setPoints] = useState(0);
-  const [order, setOrder] = useState<IOrder>({ dough: '', size: '', ingredients: [], imageUrl: '' });
+  const [points, setPoints] = useState(initialData.points);
+  const [order, setOrder] = useState<IOrder>(initialData.order);
 
   useEffect(() => {
     setStoreMock(mock as unknown as IData);
+    const pointsStored = parseInt(localStorage.getItem('stoomPoints') || '0');
+    if (pointsStored > 0) {
+      setPoints(pointsStored);
+    }
   }, []);
 
   const ingredients = storeMock.dailyRecommendation?.ingredients
@@ -48,39 +56,50 @@ export const App = () => {
     const defaultValue = storeMock.dailyRecommendation?.points;
     const newPoints = points + defaultValue;
     setPoints(newPoints);
+    localStorage.setItem('stoomPoints', newPoints.toString());
   };
 
   const handleSelectDough = (id: number) => {
-    setOrder({ ...order, dough: storeMock.doughs[id].name, imageUrl: storeMock.doughs[id].imageUrl });
+    const { doughs } = storeMock;
+    const current = doughs[id];
 
-    storeMock.doughs.forEach((dough) => (dough.selected = false));
-    storeMock.doughs[id].selected = !storeMock.doughs[id].selected;
+    setOrder({ ...order, dough: current.name, imageUrl: current.imageUrl });
+
+    doughs.forEach((dough) => (dough.selected = false));
+    current.selected = !current.selected;
     setStoreMock({ ...storeMock });
   };
 
   const handleSelectSize = (id: number) => {
-    setOrder({ ...order, size: storeMock.sizes[id].name });
+    const { sizes } = storeMock;
+    const current = sizes[id];
 
-    storeMock.sizes.forEach((size) => (size.selected = false));
-    storeMock.sizes[id].selected = !storeMock.sizes[id].selected;
+    sizes.forEach((size) => (size.selected = false));
+    current.selected = !current.selected;
+
+    setOrder({ ...order, size: current.name });
     setStoreMock({ ...storeMock });
   };
 
   const handleSelectIngredients = (id: number) => {
-    storeMock.ingredients[id].selected = !storeMock.ingredients[id].selected;
+    const { ingredients } = storeMock;
+    const { ingredients: orderIngredients } = order;
+    const current = ingredients[id];
 
-    if (storeMock.ingredients[id].selected) {
-      order.ingredients.push(storeMock.ingredients[id].name);
-      setOrder({ ...order, ingredients: order.ingredients });
+    current.selected = !current.selected;
+
+    if (current.selected) {
+      orderIngredients.push(current.name);
+      setOrder({ ...order, ingredients: orderIngredients });
     } else {
-      setOrder({ ...order, ingredients: order.ingredients.filter((ingredient) => !ingredient) });
+      setOrder({ ...order, ingredients: orderIngredients.filter((ingredient) => !ingredient) });
     }
 
     setStoreMock({ ...storeMock });
   };
 
   return (
-    <div>
+    <>
       <Header points={points} />
       <Section>
         <DailyRecommendation pizza={dailyRecommendation} handlePoints={handlePoints} />
@@ -94,7 +113,7 @@ export const App = () => {
           handleSelectIngredients={handleSelectIngredients}
         />
       </Section>
-    </div>
+    </>
   );
 };
 

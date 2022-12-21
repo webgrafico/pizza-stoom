@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { colors, device, size } from '../../../GlobalStyles';
+import { colors, device } from '../../../GlobalStyles';
 
 const Container = styled.div`
   width: 100%;
-
   @media ${device.mobileL} {
     display: flex;
   }

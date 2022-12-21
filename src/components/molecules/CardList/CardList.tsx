@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card } from '../../atoms/Card';
-
 import List, { Item } from './Styles';
 
 export interface IDoughBase {

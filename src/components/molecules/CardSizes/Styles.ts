@@ -1,12 +1,7 @@
 import styled from 'styled-components';
 import { colors, device } from '../../../GlobalStyles';
 
-const Container = styled.div`
-  h2 {
-  }
-`;
-
-export const List = styled.ul`
+const List = styled.ul`
   flex: 0 1 0%;
   grid-gap: 1rem;
   padding: 0;
@@ -58,4 +53,4 @@ export const Item = styled.li.attrs((props: { selected: boolean }) => props)`
   }
 `;
 
-export default Container;
+export default List;

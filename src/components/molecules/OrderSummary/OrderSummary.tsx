@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Image } from '../../atoms/Card/variations/CardRecommendation/Styles';
-import Container, { Context, List } from './Styles';
+import Container, { Context } from './Styles';
 import { Item } from './Styles';
 
 export interface IOrder {
@@ -33,13 +33,13 @@ export const OrderSummary = ({ order }: IOrderSummary) => {
 
         <div>
           <h3>Ingredientes escolhidos:</h3>
-          <List>
+          <ul>
             {ingredients.map((ingredient, index) => (
               <Item key={index}>
                 <div>{ingredient}</div>
               </Item>
             ))}
-          </List>
+          </ul>
         </div>
       </Context>
     </Container>
