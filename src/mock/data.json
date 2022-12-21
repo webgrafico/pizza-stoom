@@ -6,7 +6,8 @@
     "dough": 1,
     "ingredients": [4, 1, 0, 3, 2],
     "price": 37,
-    "points": 50
+    "points": 50,
+    "size": 1
   },
   "doughs": [
     {

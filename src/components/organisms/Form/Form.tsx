@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '../../atoms/Button/Button';
 import { Steps } from '../../atoms/Steps';
 import { CardList } from '../../molecules/CardList';
@@ -43,6 +43,12 @@ export const Form = ({
     'Concluir',
     'Home'
   ];
+
+  useEffect(() => {
+    if (order.isDailyRecommendation) {
+      setCurrent(4);
+    }
+  }, [order]);
 
   const handleSteps = () => {
     const isDoughSelected = doughs.some((dough) => dough.selected);

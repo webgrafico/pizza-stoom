@@ -13,6 +13,7 @@ import { IOrder } from '../../molecules/OrderSummary/OrderSummary';
 interface IDailyRecommendation extends Omit<IPizzaRecommendation, 'dough' | 'ingredients'> {
   dough: number;
   ingredients: number[];
+  size: number;
 }
 interface IData {
   dailyRecommendation: IDailyRecommendation;
@@ -23,7 +24,7 @@ interface IData {
 }
 
 const initialData = {
-  order: { dough: '', size: '', ingredients: [], imageUrl: '' },
+  order: { dough: '', size: '', ingredients: [], imageUrl: '', isDailyRecommendation: false },
   points: 0
 };
 
@@ -57,6 +58,16 @@ export const App = () => {
     const newPoints = points + defaultValue;
     setPoints(newPoints);
     localStorage.setItem('stoomPoints', newPoints.toString());
+
+    const pizza = {
+      ...order,
+      isDailyRecommendation: true,
+      dough: storeMock.doughs[storeMock.dailyRecommendation?.dough].name,
+      imageUrl: storeMock.dailyRecommendation?.imageUrl,
+      size: storeMock.sizes[storeMock.dailyRecommendation?.size].name
+    };
+
+    setOrder(pizza);
   };
 
   const handleSelectDough = (id: number) => {

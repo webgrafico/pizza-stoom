@@ -8,6 +8,7 @@ export interface IOrder {
   size: string;
   ingredients: string[];
   imageUrl: string;
+  isDailyRecommendation: boolean;
 }
 
 interface IOrderSummary {
