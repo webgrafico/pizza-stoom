@@ -61,18 +61,18 @@ export const App = () => {
   };
 
   const handlePoints = () => {
-    const pizza = {
+    const { dough, imageUrl, ingredients, size } = storeMock.dailyRecommendation;
+
+    const dailyRecommendation = {
       ...order,
       isDailyRecommendation: true,
-      dough: storeMock.doughs[storeMock.dailyRecommendation?.dough].name,
-      imageUrl: storeMock.dailyRecommendation?.imageUrl,
-      size: storeMock.sizes[storeMock.dailyRecommendation?.size].name,
-      ingredients: storeMock.dailyRecommendation?.ingredients.map(
-        (ingredient) => storeMock.ingredients[ingredient].name
-      )
+      dough: storeMock.doughs[dough].name,
+      imageUrl: imageUrl,
+      size: storeMock.sizes[size].name,
+      ingredients: ingredients.map((ingredient) => storeMock.ingredients[ingredient].name)
     };
 
-    setOrder(pizza);
+    setOrder(dailyRecommendation);
   };
 
   const handleSelectDough = (id: number) => {
