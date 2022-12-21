@@ -32,16 +32,42 @@
     }
   ],
   "ingredients": [
-    "mussarela",
-    "peito de peru",
-    "palmito",
-    "parmesão",
-    "orégano",
-    "calabresa",
-    "azeitona",
-    "cebola",
-    "ovo cozido",
-    "presunto",
-    "milho verde"
+    { "name": "mussarela", "selected": false },
+    { "name": "peito de peru", "selected": false },
+    { "name": "palmito", "selected": false },
+    { "name": "parmesão", "selected": false },
+    { "name": "orégano", "selected": false },
+    { "name": "calabresa", "selected": false },
+    { "name": "azeitona", "selected": false },
+    { "name": "cebola", "selected": false },
+    { "name": "ovo cozido", "selected": false },
+    { "name": "presunto", "selected": false },
+    { "name": "milho verde", "selected": false }
+  ],
+  "sizes": [
+    {
+      "name": "Broto",
+      "size": 4,
+      "imageUrl": "http://localhost:5173/src/assets/pizza-broto.png",
+      "selected": false
+    },
+    {
+      "name": "Média",
+      "size": 6,
+      "imageUrl": "http://localhost:5173/src/assets/pizza-media.png",
+      "selected": false
+    },
+    {
+      "name": "Grande",
+      "size": 8,
+      "imageUrl": "http://localhost:5173/src/assets/pizza-grande.png",
+      "selected": false
+    },
+    {
+      "name": "Big",
+      "size": 12,
+      "imageUrl": "http://localhost:5173/src/assets/pizza-big.png",
+      "selected": false
+    }
   ]
 }

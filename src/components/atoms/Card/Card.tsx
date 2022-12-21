@@ -1,4 +1,5 @@
 import React from 'react';
+import { IIngredient } from '../../molecules/SelectItem/SelectItem';
 import { CardRecommendation } from './variations/CardRecommendation';
 import { CardSelection } from './variations/CardSelection';
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card } from '../../atoms/Card/Card';
 import Container from './Styles';
 

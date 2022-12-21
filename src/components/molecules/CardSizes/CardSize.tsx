@@ -1,35 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Container, { List } from './Styles';
 import { Item } from './Styles';
-import sizeBroto from '../../../assets/pizza-broto.png';
-import sizeMedia from '../../../assets/pizza-media.png';
-import sizeGrande from '../../../assets/pizza-grande.png';
-import sizeBig from '../../../assets/pizza-big.png';
 
-export const CardSize = () => {
+export interface ISizes {
+  name: string;
+  size: number;
+  imageUrl: string;
+  selected: boolean;
+}
+interface ICardSize {
+  handleSelect(id: number): void;
+  sizes: ISizes[];
+}
+
+export const CardSize = ({ handleSelect, sizes }: ICardSize) => {
   return (
     <Container>
       <List>
-        <Item>
-          <h3>Broto</h3>
-          <div>4 Fatias</div>
-          <img src={sizeBroto} alt='Broto' width={150} />
-        </Item>
-        <Item>
-          <h3>Média</h3>
-          <div>6 Fatias</div>
-          <img src={sizeMedia} alt='Média' width={150} />
-        </Item>
-        <Item>
-          <h3>Grande</h3>
-          <div>8 Fatias</div>
-          <img src={sizeGrande} alt='Grande' width={150} />
-        </Item>
-        <Item>
-          <h3>Big</h3>
-          <div>12 Fatias</div>
-          <img src={sizeBig} alt='Big' width={150} />
-        </Item>
+        {sizes.map((size, index) => (
+          <Item key={index} onClick={() => handleSelect(index)} selected={size.selected}>
+            <h3>{size.name}</h3>
+            <div>{size.size} Fatias</div>
+            <img src={size.imageUrl} alt={size.name} width={150} />
+          </Item>
+        ))}
       </List>
     </Container>
   );

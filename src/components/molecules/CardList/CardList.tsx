@@ -16,15 +16,14 @@ export interface IDough extends IDoughBase {
 
 interface ICardList {
   doughs: IDough[];
+  handleSelect(id: number): void;
 }
 
-export const CardList = ({ doughs }: ICardList) => {
-  const [selected, setSelected] = useState(false);
-
+export const CardList = ({ doughs, handleSelect }: ICardList) => {
   return (
     <List>
       {doughs?.map((dough, index) => (
-        <Item key={index}>
+        <Item key={index} onClick={() => handleSelect(index)}>
           <Card
             selected={dough.selected}
             variation='cardSelection'
