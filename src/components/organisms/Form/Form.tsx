@@ -45,6 +45,11 @@ export const Form = ({
   ];
 
   const handleSteps = () => {
+    const isDoughSelected = doughs.some((dough) => dough.selected);
+    if (!isDoughSelected) {
+      return false;
+    }
+
     current < maxSteps ? setCurrent(current + 1) : setCurrent(1);
   };
 

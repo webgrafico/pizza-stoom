@@ -28,7 +28,7 @@ export const Item = styled.li`
 export const Context = styled.div`
   padding: 0 1rem;
   @media ${device.mobileL} {
-    padding: 0;
+    padding: 1rem 0;
   }
 `;
 

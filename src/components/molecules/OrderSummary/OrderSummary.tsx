@@ -26,21 +26,25 @@ export const OrderSummary = ({ order }: IOrderSummary) => {
           {order.dough}
         </div>
 
-        <div>
-          <h3>Tamanho da pizza:</h3>
-          {order.size}
-        </div>
+        {order.size && (
+          <div>
+            <h3>Tamanho da pizza:</h3>
+            {order.size}
+          </div>
+        )}
 
-        <div>
-          <h3>Ingredientes escolhidos:</h3>
-          <ul>
-            {ingredients.map((ingredient, index) => (
-              <Item key={index}>
-                <div>{ingredient}</div>
-              </Item>
-            ))}
-          </ul>
-        </div>
+        {ingredients.length > 0 && (
+          <div>
+            <h3>Ingredientes escolhidos:</h3>
+            <ul>
+              {ingredients.map((ingredient, index) => (
+                <Item key={index}>
+                  <div>{ingredient}</div>
+                </Item>
+              ))}
+            </ul>
+          </div>
+        )}
       </Context>
     </Container>
   );
