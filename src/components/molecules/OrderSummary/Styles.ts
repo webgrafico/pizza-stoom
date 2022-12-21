@@ -14,7 +14,10 @@ const Container = styled.div`
     grid-template-rows: auto;
   }
   h3 {
+    color: ${colors.silver};
     margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
   }
 `;
 
@@ -24,6 +27,11 @@ export const Item = styled.li`
   text-transform: capitalize;
 `;
 
-export const Context = styled.div``;
+export const Context = styled.div`
+  padding: 0 1rem;
+  @media ${device.mobileL} {
+    padding: 0;
+  }
+`;
 
 export default Container;

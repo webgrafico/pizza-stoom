@@ -28,7 +28,7 @@ export const OrderSummary = ({ order }: IOrderSummary) => {
 
         <div>
           <h3>Tamanho da pizza:</h3>
-          {order.dough}
+          {order.size}
         </div>
 
         <div>

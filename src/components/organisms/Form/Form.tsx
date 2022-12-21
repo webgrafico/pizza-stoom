@@ -5,6 +5,7 @@ import { CardList } from '../../molecules/CardList';
 import { IDough } from '../../molecules/CardList/CardList';
 import { CardSize } from '../../molecules/CardSizes';
 import { ISizes } from '../../molecules/CardSizes/CardSize';
+import { CompletedOrder } from '../../molecules/CompletedOrder';
 import { Title } from '../../molecules/DailyRecommendation/Styles';
 import { OrderSummary } from '../../molecules/OrderSummary';
 import { IOrder } from '../../molecules/OrderSummary/OrderSummary';
@@ -58,7 +59,7 @@ export const Form = ({
       case 4:
         return <OrderSummary order={order} />;
       case 5:
-        return <>Pedido finalizado</>;
+        return <CompletedOrder />;
       default:
         break;
     }
