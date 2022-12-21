@@ -9,7 +9,6 @@ import sizeBig from '../../../assets/pizza-big.png';
 export const CardSize = () => {
   return (
     <Container>
-      <h2>Escolha o tamanho da pizza</h2>
       <List>
         <Item>
           <h3>Broto</h3>

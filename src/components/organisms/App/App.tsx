@@ -57,7 +57,7 @@ export const App = () => {
       <Header points={points} />
       <Section>
         <DailyRecommendation pizza={dailyRecommendation} handlePoints={handlePoints} />
-        <Form doughs={storeMock.doughs} />
+        <Form doughs={storeMock.doughs} ingredients={storeMock.ingredients} />
       </Section>
     </div>
   );

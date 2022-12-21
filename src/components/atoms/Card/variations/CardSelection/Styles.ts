@@ -10,6 +10,11 @@ const Container = styled.div.attrs((props: { selected: boolean }) => props)`
   border: ${(props) => (props.selected ? `2px solid ${colors.green}` : 'none')};
   box-sizing: border-box;
   line-height: 1.3;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+  &:hover {
+    filter: brightness(93%);
+  }
   @media ${device.mobileL} {
     width: 100%;
     grid-template-columns: 1fr 2fr;

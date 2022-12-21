@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import { colors, device } from '../../../GlobalStyles';
 
-const Container = styled.div`
-  h2 {
-  }
-`;
+const Container = styled.div``;
 
 export const List = styled.ul`
   flex: 0 1 0%;
@@ -31,7 +28,7 @@ export const Item = styled.li.attrs((props: { selected: boolean }) => props)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
   margin-bottom: 1rem;
   cursor: pointer;
   transition: 0.2s ease-in;
@@ -41,20 +38,12 @@ export const Item = styled.li.attrs((props: { selected: boolean }) => props)`
   @media ${device.tablet} {
     margin-bottom: 0;
   }
-  h3 {
-    color: ${colors.green};
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-bottom: 0;
-  }
+
   div {
     font-size: 1.2rem;
-    color: ${colors.yellow};
+    color: ${colors.silverDark};
     font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  img {
-    margin-bottom: 1rem;
+    text-transform: capitalize;
   }
 `;
 
