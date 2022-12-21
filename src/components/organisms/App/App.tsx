@@ -58,6 +58,7 @@ export const App = () => {
     const newPoints = points + defaultValue;
     setPoints(newPoints);
     localStorage.setItem('stoomPoints', newPoints.toString());
+    setOrder({ dough: '', size: '', ingredients: [], imageUrl: '', isDailyRecommendation: false });
   };
 
   const handlePoints = () => {

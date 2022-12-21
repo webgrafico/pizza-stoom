@@ -53,12 +53,16 @@ export const Form = ({
   }, [order]);
 
   const handleSteps = () => {
+    if (current === 5) {
+      setCurrent(1);
+    }
+
     const isDoughSelected = doughs.some((dough) => dough.selected);
     if (!isDoughSelected && order.isDailyRecommendation === false) {
       return false;
     }
 
-    if (current === 4) {
+    if (current === 4 && order.isDailyRecommendation) {
       handleActionPoint();
     }
 
