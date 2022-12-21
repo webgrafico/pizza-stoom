@@ -6,6 +6,8 @@ import { IDough } from '../../molecules/CardList/CardList';
 import { CardSize } from '../../molecules/CardSizes';
 import { ISizes } from '../../molecules/CardSizes/CardSize';
 import { Title } from '../../molecules/DailyRecommendation/Styles';
+import { OrderSummary } from '../../molecules/OrderSummary';
+import { IOrder } from '../../molecules/OrderSummary/OrderSummary';
 import { SelectItem } from '../../molecules/SelectItem';
 import { IIngredient } from '../../molecules/SelectItem/SelectItem';
 import Container, { Footer } from './Styles';
@@ -17,11 +19,13 @@ interface IForm {
   handleSelectSize(id: number): void;
   handleSelectIngredients(id: number): void;
   sizes: ISizes[];
+  order: IOrder;
 }
 
 export const Form = ({
   doughs,
   sizes,
+  order,
   ingredients,
   handleSelectDough,
   handleSelectSize,
@@ -52,7 +56,7 @@ export const Form = ({
       case 3:
         return <SelectItem ingredients={ingredients} handleSelect={handleSelectIngredients} />;
       case 4:
-        return <>Resumo</>;
+        return <OrderSummary order={order} />;
       case 5:
         return <>Pedido finalizado</>;
       default:

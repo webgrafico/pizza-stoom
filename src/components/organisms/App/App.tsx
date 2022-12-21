@@ -3,17 +3,13 @@ import { Header } from '../../molecules/Header';
 import { Form } from '../Form';
 import Section from './Styles';
 
-import pizzaOne from '../../../assets/pizza-1.jpg';
-import pizzaTwo from '../../../assets/pizza-2.jpg';
-import pizzaThree from '../../../assets/pizza-3.jpg';
-import pizzaFour from '../../../assets/pizza-4.jpg';
-
 import mock from '../../../mock/data.json';
 import { useEffect, useState } from 'react';
 import { IPizzaRecommendation } from '../../molecules/DailyRecommendation/DailyRecommendation';
 import { IDough } from '../../molecules/CardList/CardList';
 import { ISizes } from '../../molecules/CardSizes/CardSize';
 import { IIngredient } from '../../molecules/SelectItem/SelectItem';
+import { IOrder } from '../../molecules/OrderSummary/OrderSummary';
 
 interface IDailyRecommendation extends Omit<IPizzaRecommendation, 'dough' | 'ingredients'> {
   dough: number;
@@ -27,16 +23,10 @@ interface IData {
   sizes: ISizes[];
 }
 
-interface IOrder {
-  dough: number;
-  size: number;
-  ingredients: string[];
-}
-
 export const App = () => {
   const [storeMock, setStoreMock] = useState<IData>({} as IData);
   const [points, setPoints] = useState(0);
-  const [order, setOrder] = useState<IOrder>({ dough: 0, size: 0, ingredients: [] } as IOrder);
+  const [order, setOrder] = useState<IOrder>({ dough: '', size: '', ingredients: [], imageUrl: '' });
 
   useEffect(() => {
     setStoreMock(mock as unknown as IData);
@@ -61,7 +51,7 @@ export const App = () => {
   };
 
   const handleSelectDough = (id: number) => {
-    setOrder({ ...order, dough: id });
+    setOrder({ ...order, dough: storeMock.doughs[id].name, imageUrl: storeMock.doughs[id].imageUrl });
 
     storeMock.doughs.forEach((dough) => (dough.selected = false));
     storeMock.doughs[id].selected = !storeMock.doughs[id].selected;
@@ -69,7 +59,7 @@ export const App = () => {
   };
 
   const handleSelectSize = (id: number) => {
-    setOrder({ ...order, size: id });
+    setOrder({ ...order, size: storeMock.sizes[id].name });
 
     storeMock.sizes.forEach((size) => (size.selected = false));
     storeMock.sizes[id].selected = !storeMock.sizes[id].selected;
@@ -98,6 +88,7 @@ export const App = () => {
           doughs={storeMock.doughs}
           ingredients={storeMock.ingredients}
           sizes={storeMock.sizes}
+          order={order}
           handleSelectDough={handleSelectDough}
           handleSelectSize={handleSelectSize}
           handleSelectIngredients={handleSelectIngredients}
